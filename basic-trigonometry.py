@@ -54,7 +54,6 @@ class BasicTrigonometry(Scene):
         self.wait()
         self.play(Create(VGroup(line1, mi), run_time=0.25, rate_func=linear))
         self.wait()
-        #self.play(Write(radius), run_time=0.25, rate_func=linear)
         self.play(ReplacementTransform(line1, radius), ReplacementTransform(mi, mi_move))
         self.wait()
         self.play(Create(VGroup(theta_label, theta_value)))
