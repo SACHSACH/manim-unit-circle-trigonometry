@@ -1,10 +1,16 @@
 from manim import *
-
+from numpy import arctan2, degrees
 class BasicTrigonometry(Scene):
     def construct(self):
         theta = ValueTracker(PI / 4)
         theta_label = MathTex(r"\theta=").to_edge(UR, buff=2)
-        theta_value = always_redraw(lambda: DecimalNumber(theta.get_value()).next_to(theta_label, RIGHT))
+        theta_value = always_redraw(
+            lambda: DecimalNumber(
+                degrees(arctan2(np.sin(theta.get_value()), np.cos(theta.get_value()))),
+                num_decimal_places=2,
+                include_sign=False
+                ).next_to(theta_label, RIGHT)
+) 
         
         plane = NumberPlane(background_line_style={"stroke_width": 0}).add_coordinates()
 
